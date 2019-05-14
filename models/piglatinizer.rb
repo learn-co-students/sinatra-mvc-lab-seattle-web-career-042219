@@ -4,13 +4,20 @@ class PigLatinizer
 
     def piglatinize(user_input)
         split_ar = user_input.split(" ")
-        # split_ar.each do |word|
-        #     first_vowel = word.split("").downcase.find_index do |letter|
-        #         letter == "a"  ||  letter == "e" ||  letter == "i"  ||  letter == "o" ||  letter == "u"
-        #     end
-        #     binding.pry
-        # end
-        split_ar.join(" ")
+        pig_latinized_ar = []
+        split_ar.each do |word|
+            new_word=[]
+            first_vowel_index = word.split("").find_index do |letter|
+                letter.downcase == "a"  ||  letter.downcase == "e" ||  letter.downcase == "i"  ||  letter.downcase == "o" ||  letter.downcase == "u"
+            end
+            if first_vowel_index == 0
+                new_word = word + "way"
+            else
+                new_word = word.slice(first_vowel_index..-1)+word.slice(0..first_vowel_index-1)+"ay"
+            end
+            pig_latinized_ar << new_word
+        end
+        pig_latinized_ar.join(" ")
     end
 
 end
