@@ -6,21 +6,21 @@ class PigLatinizer
 
   private
 
-  def cons(char)
-    !char.match(/[aAeEiIoOuU]/)
+  def consonant(character)
+    !character.match(/[aAeEiIoOuU]/)
   end
 
   def piglatinize_word(word)
 
-    if !cons(word[0])
+    if !consonant(word[0])
 
       word = word + "w"
 
-    elsif cons(word[0]) && cons(word[1]) && cons(word[2])
+    elsif consonant(word[0]) && consonant(word[1]) && consonant(word[2])
 
       word = word.slice(3..-1) + word.slice(0,3)
 
-    elsif cons(word[0]) && cons(word[1])
+    elsif consonant(word[0]) && consonant(word[1])
 
       word = word.slice(2..-1) + word.slice(0,2)
 
